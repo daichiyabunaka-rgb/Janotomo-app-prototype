@@ -291,7 +291,7 @@ List<Recruitment> seedRecruitments(DateTime now, List<AppUser> generalUsers) {
   ];
 }
 
-/// ゆずりあい・交換のシード。anchor（現在地）からの相対距離で配置する。
+/// 近況報告のシード。anchor（現在地）からの相対距離で配置する。
 /// id が 'cx-seed-' 始まりのものは GPS 更新のたびに再配置される
 /// （AppState.applyGps を参照）。
 class _ExchangeSeedSpec {
@@ -313,11 +313,11 @@ const List<_ExchangeSeedSpec> _exchangeSeedSpecs = [
   _ExchangeSeedSpec(
     'cx-seed-1',
     'u-goods-hina',
-    'give',
-    '麻雀牌（使用済み・揃い済み）',
+    'agari',
+    '初めての国士無双を上がりました',
     '雀荘 桜荘 周辺',
-    '新しい牌を買ったので、'
-        '使ってくださる方にゆずります。手渡し前提です。',
+    '13面待ちでテンパってそのまま上がりました。'
+        '記念に写真を残しておきました。',
     0.3,
     -0.6,
     Duration(hours: 2),
@@ -325,11 +325,11 @@ const List<_ExchangeSeedSpec> _exchangeSeedSpecs = [
   _ExchangeSeedSpec(
     'cx-seed-2',
     'u-beginner-nana',
-    'wanted',
-    '牌ケース（ソフトタイプ）を探しています',
+    'post',
+    '今週の雀荘通いが続いています',
     '駅前広場 周辺',
-    '初心者セットで買った箱が崩れてきたので探しています。不要グッズとの'
-        '交換の対応も可能です。DMお待ちしています。',
+    'ルールにも少しずつ慣れてきました。'
+        '同じくらいのレベルの方と打ちたいです。',
     -0.2,
     0.8,
     Duration(hours: 5),
@@ -337,23 +337,23 @@ const List<_ExchangeSeedSpec> _exchangeSeedSpecs = [
   _ExchangeSeedSpec(
     'cx-seed-3',
     'u-tonpu-miu',
-    'trade',
-    '卓上ライト（LED）と 点棒ケースを交換します',
+    'event',
+    '週末の大会に参加してきました',
     '市役所裏の公園 周辺',
-    '電池式から充電式に乗り換えたので交換希望です。状態は写真で'
-        '送ります。公共の場所で受け渡しできます。',
+    '上位に入れませんでしたが対局に勉強させて'
+        'もらいました。来月も参加予定です。',
     -0.9,
     -0.3,
     Duration(hours: 26),
   ),
 ];
 
-List<MahjongGoodsExchange> buildSeedMahjongGoodsExchanges(
+List<MahjongReport> buildSeedMahjongReports(
     DateTime now, double anchorLat, double anchorLng) {
   final cos = (anchorLat * math.pi / 180.0).abs().clamp(0.01, 1.0);
   return [
     for (final s in _exchangeSeedSpecs)
-      MahjongGoodsExchange(
+      MahjongReport(
         id: s.id,
         posterId: s.posterId,
         kind: s.kind,
